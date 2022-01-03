@@ -1,0 +1,94 @@
+Person:
+{{12345, Doktor Mugg, 48},
+{23456, Elon Musk, 34},
+{34567, Din Mamma, 85},
+{45678, Snusmumriken, 23},
+{56789, Spöket Laban, 237},
+{67891, Pär Gässle, 64},
+{78912, Lilla Bocken Bruse, 11},
+{89123, Mellan Bocken Bruse, 17},
+{91234, Stora Bocken Bruse, 23}}
+
+Address:
+{{12345, 4564-45, Kloaken, Dasseborg},
+{23456, 6732-89, Månen},
+{34567, 4872-43, Blabläblu, Gragnnru},
+{45678, 5218-38, Nåt Ställe, Mumindalen},
+{56789, 6359-58, Din Källare, Ditt Hus},
+{67891, 4278-53, Naturhistoriska Riksmuseet, Stockholm}
+{78912, 5478-51, Nån Kulle, ¯\_(ツ)_/¯}
+{89123, 5478-51, Nån Kulle, ¯\_(ツ)_/¯}
+{91234, 5478-51, Nån Kulle, ¯\_(ツ)_/¯}
+
+Instructor:
+{{12345, 123},
+{23456, 234},
+{34567, 345}}
+
+InstructorAvailability:
+{{12345, 123, ?},
+{23456, 234, ?},
+{34567, 345, ?}}
+
+InstructorPayment:
+{{45, 12345, 123, 1, 1984, 20},
+{56, 23456, 234, 1, 1984, 20},
+{67, 34567, 345, 1, 1984, 20}}
+
+Instrument:
+{{98765, teremin},
+{87654, nyckelharpa},
+{76543, vuvuzela},
+{65432, kyrkorgel},
+{54321, säckpipa}}
+
+InstructorInstruments:
+{{98765, 12345, 123},
+{98765, 23456, 234},
+{87654, 12345, 123},
+{87654, 23456, 234},
+{87654, 34567, 345},
+{76543, 34567, 345},
+{65432, 12345, 123},
+{65432, 23456, 234},
+{65432, 34567, 345},
+{54321, 12345, 123},
+{54321, 34567, 345}}
+
+InstrumentForRent:
+{{98, 98765, Acme, 1},
+{99, 98765, Acne, 5}
+{87, 87654, Acme, 3},
+{76, 76543, Acme, 5378},
+{65, 65432, Acme, 12},
+{54, 54321, Acme, 8}}
+
+Student:
+{{45678, 456, 0},
+{56789, 567, 0},
+{67891, 678, 0},
+{78912, 789, 1},
+{89123, 891, 1},
+{91234, 912, 1}}
+
+Sibling:
+?
+
+InstrumentCurrentlyRenting:
+{{45678, 456, 76, 76543, 26/10/1984},
+{45678, 456, 54, 54321, 08/09/1984},
+{56789, 567, 76, 76543, 27/05/1867},
+{56789, 567, 87, 87654,18/07/1895},
+{91234, 912, 76, 76543, 17/04/1983}}
+
+
+
+InstrumentLevel; //klar
+InstrumentCurrentlyRenting; // not done 
+LessonType; //klar
+Ensamble; //klar
+Individual; //klar
+Group; //klar
+Lesson;
+StudentFeePerLesson;//not needed
+StudentsInLesson;

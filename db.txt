@@ -1,0 +1,8 @@
+sudo -u postgres psql
+https://tableplus.com/blog/2018/04/postgresql-how-to-list-all-tables.html
+
+SELECT COUNT(*) FROM (SELECT COUNT(episode_number) as Episodes, show_title_id FROM public.episodes GROUP BY show_title_id HAVING COUNT(episode_number) >= 50 AND COUNT(episode_number)<100 ORDER BY COUNT(episode_number) DESC) as B;
+
+SELECT table_name FROM information_schema.tables;
+
+SELECT t.original_title, r.rating FROM public.ratings as r, public.titles as t WHERE t.title_id = r.title_id ORDER BY r.rating ASC;
