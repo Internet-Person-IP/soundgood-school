@@ -16,6 +16,7 @@ DROP DATABASE sound;
 CREATE DATABASE sound;
 \c sound 
 \i School1.sql 
+\i populate.sql 
 */
 
 /*All persons*/
@@ -49,9 +50,9 @@ INSERT INTO Sibling (SiblingRelation) VALUES (1);
 INSERT INTO Student (PersonID, SiblingRelation) VALUES (4,0);
 INSERT INTO Student (PersonID, SiblingRelation) VALUES (5,0);
 INSERT INTO Student (PersonID, SiblingRelation) VALUES (6,0);
-INSERT INTO Student (PersonID, SiblingRelation, SiblingDiscount) VALUES (7,1,CAST(1 AS BIT));
-INSERT INTO Student (PersonID, SiblingRelation, SiblingDiscount) VALUES (8,1,CAST(1 AS BIT));
-INSERT INTO Student (PersonID, SiblingRelation, SiblingDiscount) VALUES (9,1,CAST(1 AS BIT));
+INSERT INTO Student (PersonID, SiblingRelation) VALUES (7,1);
+INSERT INTO Student (PersonID, SiblingRelation) VALUES (8,1);
+INSERT INTO Student (PersonID, SiblingRelation) VALUES (9,1);
 
 
 
