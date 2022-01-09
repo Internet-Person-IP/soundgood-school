@@ -41,7 +41,6 @@ ON lesson.instructorid = instructor.instructorid
 INNER JOIN Person on person.personid = instructor.personid 
 WHERE lesson.date < now() AND EXTRACT(MONTH FROM now()) = EXTRACT(MONTH FROM lesson.date)  
 GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 4;
-SELECT * FROM Ensamble JOIN Lesson ON lesson.lessontype = ensamble.lessontype WHERE lesson.date < (select date_trunc('week', current_date + 7)) AND lesson.date > (select date_trunc('week', current_date));
 
 //QUERY 4 DONE;
 (SELECT (ensamble.maximum - COUNT(*)) AS SeatsLeft, lesson.lessonid
