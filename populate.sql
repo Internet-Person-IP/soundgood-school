@@ -346,13 +346,15 @@ GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 1;
 
 
 TEST QUERY 4 
-SELECT COUNT(*),person.name                                                                                               
-FROM                                                                
-Lesson                                                                  
-INNER JOIN Instructor 
-ON lesson.instructorid = instructor.instructorid 
-INNER JOIN Person on person.personid = instructor.personid 
-WHERE lesson.date < now() AND EXTRACT(MONTH FROM CAST('2021-04-01' AS DATE)) = EXTRACT(MONTH FROM lesson.date)  
-GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 1;
+(SELECT (ensamble.maximum - COUNT(*)) AS SeatsLeft, lesson.lessonid
+FROM StudentsInLesson                  
+INNER JOIN Lesson                                     
+ON studentsinlesson.lessonid = lesson.lessonid 
+INNER JOIN Ensamble                                                                                         
+ON ensamble.lessontype = lesson.lessontype                                                                                                        
+WHERE lesson.date < (select date_trunc('week', CAST('2021-04-01' AS DATE) + 30))
+AND lesson.date > (select date_trunc('week', CAST('2021-04-01' AS DATE)))
+GROUP BY studentsinlesson.lessonid, ensamble.maximum, lesson.lessonid
+HAVING COUNT(*) < ensamble.maximum);
 
 */
