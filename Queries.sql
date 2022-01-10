@@ -40,7 +40,8 @@ INNER JOIN Instructor
 ON lesson.instructorid = instructor.instructorid 
 INNER JOIN Person on person.personid = instructor.personid 
 WHERE lesson.date < now() AND EXTRACT(MONTH FROM now()) = EXTRACT(MONTH FROM lesson.date)  
-GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 4;
+GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 2
+ORDER BY COUNT(*) DESC;
 
 //QUERY 4 DONE;
 (SELECT (ensamble.maximum - COUNT(*)) AS SeatsLeft, lesson.lessonid

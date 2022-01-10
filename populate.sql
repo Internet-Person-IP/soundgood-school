@@ -171,9 +171,9 @@ INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (1, 
 INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (2, 2, '2021-04-01', 'D2',9);
 INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (2, 2, '2021-04-06', 'D2',9);
 INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (2, 2, '2021-04-05', 'D2',9);
-
 INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (2, 2, '2021-05-15', 'D2',7);
-
+INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (3, 3, '2021-04-06', 'D2',9);
+INSERT INTO Lesson (InstructorID, PersonID, Date, Place, LessonType) VALUES (3, 3, '2021-04-10', 'D2',8);
 -- Create lessons for 2020
 
 -- //Creating an Instrument for rent
@@ -248,7 +248,7 @@ INSERT INTO StudentsInLesson (PersonID, StudentID, LessonID, LessonType) VALUES 
 /*
 Grupprum
 
-QUERY 1
+QUERY 1 //Materialized Views
 (SELECT COUNT(*) AS TOTAL_LESSON_MONTH, DATE_TRUNC('month',lesson.date), 
 COUNT(ensamble.lessontype) AS Ensamble,
 COUNT(individual.lessontype) AS Individual,
@@ -301,11 +301,12 @@ INNER JOIN Instructor
 ON lesson.instructorid = instructor.instructorid 
 INNER JOIN Person on person.personid = instructor.personid 
 WHERE lesson.date < now() AND EXTRACT(MONTH FROM now()) = EXTRACT(MONTH FROM lesson.date)  
-GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 4;
+GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 2
+ORDER BY COUNT(*) DESC;
 
 SELECT * FROM Ensamble JOIN Lesson ON lesson.lessontype = ensamble.lessontype WHERE lesson.date < (select date_trunc('week', current_date + 7)) AND lesson.date > (select date_trunc('week', current_date));
 
-QUERY 4 DONE;
+QUERY 4 DONE; SHOULD BE A VIEW
 (SELECT (ensamble.maximum - COUNT(*)) AS SeatsLeft, lesson.lessonid
 FROM StudentsInLesson 
 INNER JOIN Lesson 
@@ -331,5 +332,27 @@ Insert into
 INSERT INTO InstrumentCurrentlyRenting (PersonID, StudentID, InstrumentRentID, InstrumentID) VALUES ()
 
 Terminate the rental that you created
+
+
+TEST QUERY 3
+SELECT COUNT(*),person.name                                                                                               
+FROM                                                                
+Lesson                                                                  
+INNER JOIN Instructor 
+ON lesson.instructorid = instructor.instructorid 
+INNER JOIN Person on person.personid = instructor.personid 
+WHERE lesson.date < now() AND EXTRACT(MONTH FROM CAST('2021-04-01' AS DATE)) = EXTRACT(MONTH FROM lesson.date)  
+GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 1;
+
+
+TEST QUERY 4 
+SELECT COUNT(*),person.name                                                                                               
+FROM                                                                
+Lesson                                                                  
+INNER JOIN Instructor 
+ON lesson.instructorid = instructor.instructorid 
+INNER JOIN Person on person.personid = instructor.personid 
+WHERE lesson.date < now() AND EXTRACT(MONTH FROM CAST('2021-04-01' AS DATE)) = EXTRACT(MONTH FROM lesson.date)  
+GROUP BY lesson.instructorid, person.name HAVING COUNT(*) >= 1;
 
 */
